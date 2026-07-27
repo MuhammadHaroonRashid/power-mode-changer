@@ -30,6 +30,7 @@ A beautiful, professional Windows Power Mode Manager built with Python, Textual,
 - **`app_ui.py`**: The main Textual UI implementation, providing the visual layout and handling input events.
 - **`power_manager.py`**: Uses `ctypes` to interface with `powrprof.dll`, making fast and robust calls to the Windows power management APIs.
 - **`notification_manager.py`**: Leverages `windows-toasts` to issue native toast notifications to the user.
+you have to create a manual power profile and provide its GUId in the code.
 
 ## License
 
