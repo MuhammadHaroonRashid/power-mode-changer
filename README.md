@@ -1,21 +1,20 @@
 # Power Mode Manager
 
-A beautiful, professional Windows Power Mode Manager built with Python, Textual, and ctypes. It provides a gorgeous terminal user interface (TUI) to easily toggle between Windows power plans without navigating through multiple setting menus.
+A lightweight, high-performance Windows Power Mode Manager written in native C++. It provides an intuitive terminal user interface (TUI) to easily toggle between Windows power plans (High Performance, Balanced, Power Saver, and Custom profiles).
 
 ## Features
 
-- **Modern TUI**: Designed using the `textual` framework with rounded borders and responsive layouts.
-- **Instant Toggling**: Switch between High Performance and Custom plans with one click.
-- **Native Notifications**: Shows native Windows 10/11 toast notifications when a plan is switched.
-- **Theme Support**: Includes multiple themes (Dark, Blue, Green, Amber).
-- **Auto-Elevation**: Automatically requests Administrator privileges if required.
-- **Standalone Executable**: Packages into a single `.exe` using PyInstaller.
+- **Native C++ Performance**: Fast, lightweight execution without runtime overhead.
+- **Modern Console TUI**: Built with clean box-drawing characters and ANSI color support.
+- **Instant Toggling**: Switch between power profiles effortlessly.
+- **Native Notifications**: Displays Windows notification toasts on power plan changes.
+- **Theme Support**: Customizable color schemes for the terminal interface.
+- **Easy Build Process**: Includes simple build scripts supporting CMake and Zig compiler toolchains.
 
 ## Build Instructions
 
-1. Ensure Python 3.8+ is installed.
-2. Run `build.bat` in the project root.
-3. The standalone executable will be generated in the `dist` folder (`dist\PowerModeManager.exe`).
+1. Ensure a C++ compiler or CMake build environment is set up.
+2. Run `build.bat` in the project root to compile the executable.
 
 ## Keyboard Shortcuts
 
@@ -26,12 +25,15 @@ A beautiful, professional Windows Power Mode Manager built with Python, Textual,
 
 ## Architecture
 
-- **`main.py`**: Handles checking for Administrator elevation and starting the application.
-- **`app_ui.py`**: The main Textual UI implementation, providing the visual layout and handling input events.
-- **`power_manager.py`**: Uses `ctypes` to interface with `powrprof.dll`, making fast and robust calls to the Windows power management APIs.
-- **`notification_manager.py`**: Leverages `windows-toasts` to issue native toast notifications to the user.
-you have to create a manual power profile and provide its GUId in the code.
+- **`src/main.cpp`**: Entry point for initializing console settings and starting the UI loop.
+- **`src/UI.cpp`**: Terminal UI implementation, handling layout rendering and keyboard inputs.
+- **`src/PowerManager.cpp`**: Interfaces with `powrprof.dll` via Windows API to query and set active power schemes.
+- **`src/NotificationManager.cpp`**: Displays system notifications when power plans are switched.
+- **`src/ThemeManager.cpp`**: Manages UI color themes and styling.
+
+> **Note**: For custom profiles, ensure the profile GUID is configured accordingly.
 
 ## License
 
 MIT License
+
